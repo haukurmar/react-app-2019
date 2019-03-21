@@ -3,6 +3,20 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "engines": {
+    "node": ">=8.1.2"
+  },
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "npm-run-all --parallel dev:*",
+    "dev:build-server": "parcel watch packages/server/index.js --target node --out-dir build --out-file server.js",
+    "dev:build-client": "parcel watch packages/app/index.html --out-dir public",
+    "dev:serve": "nodemon --watch build --exec \"node build/server.js\"",
+    "prod": "npm run clear && npm-run-all --parallel prod:*",
+    "prod:build-server": "parcel build packages/server/index.js --target node --out-dir build --out-file server.js",
+    "prod:build-client": "parcel build packages/app/index.html --out-dir public",
+    "clear": "rimraf build && rimraf public"
+  },
   "private": true,
   "workspaces": [
     "packages/*"
