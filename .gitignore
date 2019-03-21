@@ -1,0 +1,11 @@
+.idea
+.vscode
+node_modules
+*.log
+.DS_Store
+*.local
+.cache-loader
+public
+dist
+.cache
+build
